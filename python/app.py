@@ -1,25 +1,17 @@
 import streamlit as st
-import json
 from db import get_db
 from controller import PokemonController
 from models import Pokemon
 
 # -----------------------------
-# Configuración de la página
+# Configuración
 # -----------------------------
 st.set_page_config(
-    page_title="Pokedex Profesional",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    page_title="Pokedex Profesional", layout="wide", initial_sidebar_state="expanded"
 )
 
-# -----------------------------
-# Conexión a MongoDB
-# -----------------------------
 COLLECTION_NAME = "pokemons"
-DB_NAME = "pokedex_db"
-
-db = get_db(db_name=DB_NAME)
+db = get_db()
 col = db[COLLECTION_NAME]
 controller = PokemonController(col)
 
@@ -27,7 +19,8 @@ controller = PokemonController(col)
 # Sidebar: Navegación
 # -----------------------------
 st.sidebar.title("Pokedex")
-page = st.sidebar.radio("Menú", ["Listado", "Crear / Editar", "Estadísticas", "Administración"])
+page = st.sidebar.radio("Menú", ["Listado", "Crear / Editar", "Estadísticas"])
+
 
 # -----------------------------
 # Funciones auxiliares
@@ -37,12 +30,13 @@ def format_ataques(ataques):
         return "-"
     return ", ".join([f"{a.nombre} ({a.tipo})" for a in ataques])
 
+
 # -----------------------------
-# Página: Listado de Pokémon
+# Página: Listado
 # -----------------------------
 if page == "Listado":
     st.header("Listado de Pokémon")
-    
+
     # Filtros
     with st.expander("Filtros de búsqueda", expanded=True):
         nombre_filtro = st.text_input("Nombre contiene")
@@ -60,10 +54,11 @@ if page == "Listado":
         filtro["pokedex_nacional"] = {"$gte": min_pokedex}
 
     pokemons = controller.find(filtro, limit=200)
-    
+
     if not pokemons:
         st.info("No se encontraron Pokémon con esos filtros.")
     else:
+        # Mostrar tabla profesional
         data = [
             {
                 "ID": str(p.id),
@@ -73,7 +68,7 @@ if page == "Listado":
                 "Tipo 1": p.tipo_primario,
                 "Tipo 2": p.tipo_secundario,
                 "Nivel": p.nivel,
-                "Ataques": format_ataques(p.ataques)
+                "Ataques": format_ataques(p.ataques),
             }
             for p in pokemons
         ]
@@ -81,8 +76,7 @@ if page == "Listado":
 
         # Selección para editar
         edit_id = st.selectbox(
-            "Selecciona Pokémon para editar",
-            [""] + [str(p.id) for p in pokemons]
+            "Selecciona Pokémon para editar", [""] + [str(p.id) for p in pokemons]
         )
         if edit_id:
             st.session_state.edit_id = edit_id
@@ -100,7 +94,7 @@ if page == "Listado":
                 st.warning("Selecciona un Pokémon para borrar")
 
 # -----------------------------
-# Página: Crear / Editar Pokémon
+# Página: Crear / Editar
 # -----------------------------
 elif page == "Crear / Editar":
     st.header("Crear o Editar Pokémon")
@@ -132,10 +126,14 @@ elif page == "Crear / Editar":
     with st.form("form_pokemon", clear_on_submit=False):
         nombre = st.text_input("Nombre", value=nombre_val)
         region = st.text_input("Región", value=region_val)
-        pokedex_nacional = st.number_input("Pokedex nacional", min_value=0, value=int(pokedex_val))
+        pokedex_nacional = st.number_input(
+            "Pokedex nacional", min_value=0, value=int(pokedex_val)
+        )
         tipo_primario = st.text_input("Tipo primario", value=tipo1_val)
         tipo_secundario = st.text_input("Tipo secundario", value=tipo2_val)
-        nivel = st.number_input("Nivel", min_value=1, max_value=100, value=int(nivel_val))
+        nivel = st.number_input(
+            "Nivel", min_value=1, max_value=100, value=int(nivel_val)
+        )
         st.markdown("**Ataques** (una línea por ataque, formato: nombre||tipo)")
         ataques_raw = st.text_area("Ataques", value=ataques_val, height=150)
 
@@ -147,7 +145,9 @@ elif page == "Crear / Editar":
                     nombre_a, tipo_a = line.split("||", 1)
                 else:
                     nombre_a, tipo_a = line, "Normal"
-                ataques_list.append({"nombre": nombre_a.strip(), "tipo": tipo_a.strip()})
+                ataques_list.append(
+                    {"nombre": nombre_a.strip(), "tipo": tipo_a.strip()}
+                )
 
             payload = {
                 "nombre": nombre.strip(),
@@ -156,7 +156,7 @@ elif page == "Crear / Editar":
                 "tipo_primario": tipo_primario.strip() or None,
                 "tipo_secundario": tipo_secundario.strip() or None,
                 "nivel": int(nivel),
-                "ataques": ataques_list
+                "ataques": ataques_list,
             }
 
             if edit_id:
@@ -184,49 +184,9 @@ elif page == "Estadísticas":
     total = col.count_documents({})
     st.metric("Total de Pokémon", total)
 
-    tipos_primarios = col.aggregate([
-        {"$group": {"_id": "$tipo_primario", "count": {"$sum": 1}}}
-    ])
+    tipos_primarios = col.aggregate(
+        [{"$group": {"_id": "$tipo_primario", "count": {"$sum": 1}}}]
+    )
     st.subheader("Pokémon por Tipo Primario")
     for t in tipos_primarios:
         st.write(f"{t['_id'] or 'Desconocido'}: {t['count']}")
-
-# -----------------------------
-# Página: Administración
-# -----------------------------
-elif page == "Administración":
-    st.header("Administración de Base de Datos")
-
-    # -----------------------------
-    # Cargar JSON
-    # -----------------------------
-    st.subheader("Importar Pokémon desde JSON")
-    uploaded_file = st.file_uploader("Selecciona archivo JSON", type=["json"])
-    if uploaded_file:
-        if st.button("Cargar JSON en la colección"):
-            try:
-                data = json.load(uploaded_file)
-                inserted = 0
-                for doc in data:
-                    controller.insert(doc)
-                    inserted += 1
-                st.success(f"{inserted} Pokémon insertados correctamente en la colección '{COLLECTION_NAME}'")
-            except Exception as e:
-                st.error(f"Error al importar JSON: {e}")
-
-    # -----------------------------
-    # Eliminar colección / DB
-    # -----------------------------
-    st.subheader("Eliminar Colección / Base de Datos")
-    if st.button(f"Eliminar colección '{COLLECTION_NAME}'"):
-        if COLLECTION_NAME in db.list_collection_names():
-            db.drop_collection(COLLECTION_NAME)
-            st.success(f"Colección '{COLLECTION_NAME}' eliminada correctamente")
-        else:
-            st.warning(f"No existe la colección '{COLLECTION_NAME}'")
-
-    if st.button(f"Eliminar base de datos '{DB_NAME}' completa"):
-        client = db.client  # obtener MongoClient
-        client.drop_database(DB_NAME)
-        st.success(f"Base de datos '{DB_NAME}' eliminada completamente")
-
