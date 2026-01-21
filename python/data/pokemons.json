@@ -1,0 +1,650 @@
+[
+  {
+    "nombre": "Bulbasaur",
+    "region": "Kanto",
+    "pokedex_nacional": 1,
+    "tipo_primario": "Planta",
+    "tipo_secundario": "Veneno",
+    "nivel": 5,
+    "ataques": [
+      { "nombre": "Placaje", "tipo": "Normal" },
+      { "nombre": "Látigo Cepa", "tipo": "Planta" }
+    ]
+  },
+  {
+    "nombre": "Charizard",
+    "region": "Kanto",
+    "pokedex_nacional": 6,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": "Volador",
+    "nivel": 42,
+    "ataques": [
+      { "nombre": "Lanzallamas", "tipo": "Fuego" },
+      { "nombre": "Tajo Aéreo", "tipo": "Volador" },
+      { "nombre": "Garra Dragón", "tipo": "Dragón" },
+      { "nombre": "Giro Fuego", "tipo": "Fuego" }
+    ]
+  },
+  {
+    "nombre": "Pikachu",
+    "region": "Kanto",
+    "pokedex_nacional": 25,
+    "tipo_primario": "Eléctrico",
+    "tipo_secundario": null,
+    "nivel": 25,
+    "ataques": [
+      { "nombre": "Rayu", "tipo": "Eléctrico" },
+      { "nombre": "Ataque Rápido", "tipo": "Normal" },
+      { "nombre": "Cola Férrea", "tipo": "Acero" }
+    ]
+  },
+  {
+    "nombre": "Gengar",
+    "region": "Kanto",
+    "pokedex_nacional": 94,
+    "tipo_primario": "Fantasma",
+    "tipo_secundario": "Veneno",
+    "nivel": 50,
+    "ataques": [
+      { "nombre": "Bola Sombra", "tipo": "Fantasma" },
+      { "nombre": "Bomba Lodo", "tipo": "Veneno" },
+      { "nombre": "Tinieblas", "tipo": "Fantasma" },
+      { "nombre": "Hipnosis", "tipo": "Psíquico" }
+    ]
+  },
+  {
+    "nombre": "Cyndaquil",
+    "region": "Johto",
+    "pokedex_nacional": 155,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": null,
+    "nivel": 10,
+    "ataques": [
+      { "nombre": "Placaje", "tipo": "Normal" },
+      { "nombre": "Ascuas", "tipo": "Fuego" }
+    ]
+  },
+  {
+    "nombre": "Tyranitar",
+    "region": "Johto",
+    "pokedex_nacional": 248,
+    "tipo_primario": "Roca",
+    "tipo_secundario": "Siniestro",
+    "nivel": 55,
+    "ataques": [
+      { "nombre": "Roca Afilada", "tipo": "Roca" },
+      { "nombre": "Triturar", "tipo": "Siniestro" },
+      { "nombre": "Terremoto", "tipo": "Tierra" },
+      { "nombre": "Pulso Umbrío", "tipo": "Siniestro" }
+    ]
+  },
+  {
+    "nombre": "Lugia",
+    "region": "Johto",
+    "pokedex_nacional": 249,
+    "tipo_primario": "Psíquico",
+    "tipo_secundario": "Volador",
+    "nivel": 70,
+    "ataques": [
+      { "nombre": "Aerochorro", "tipo": "Volador" },
+      { "nombre": "Psíquico", "tipo": "Psíquico" },
+      { "nombre": "Hidrobomba", "tipo": "Agua" }
+    ]
+  },
+  {
+    "nombre": "Gardevoir",
+    "region": "Hoenn",
+    "pokedex_nacional": 282,
+    "tipo_primario": "Psíquico",
+    "tipo_secundario": "Hada",
+    "nivel": 45,
+    "ataques": [
+      { "nombre": "Fuerza Lunar", "tipo": "Hada" },
+      { "nombre": "Psíquico", "tipo": "Psíquico" },
+      { "nombre": "Paz Mental", "tipo": "Psíquico" }
+    ]
+  },
+  {
+    "nombre": "Mudkip",
+    "region": "Hoenn",
+    "pokedex_nacional": 258,
+    "tipo_primario": "Agua",
+    "tipo_secundario": null,
+    "nivel": 8,
+    "ataques": [
+      { "nombre": "Pistola Agua", "tipo": "Agua" },
+      { "nombre": "Bofetón Lodo", "tipo": "Tierra" }
+    ]
+  },
+  {
+    "nombre": "Rayquaza",
+    "region": "Hoenn",
+    "pokedex_nacional": 384,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": "Volador",
+    "nivel": 75,
+    "ataques": [
+      { "nombre": "Ascenso Draco", "tipo": "Volador" },
+      { "nombre": "Enfado", "tipo": "Dragón" },
+      { "nombre": "Velocidad Extrema", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Lucario",
+    "region": "Sinnoh",
+    "pokedex_nacional": 448,
+    "tipo_primario": "Lucha",
+    "tipo_secundario": "Acero",
+    "nivel": 40,
+    "ataques": [
+      { "nombre": "Esfera Aural", "tipo": "Lucha" },
+      { "nombre": "Foco Resplandor", "tipo": "Acero" },
+      { "nombre": "A bocajarro", "tipo": "Lucha" }
+    ]
+  },
+  {
+    "nombre": "Garchomp",
+    "region": "Sinnoh",
+    "pokedex_nacional": 445,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": "Tierra",
+    "nivel": 60,
+    "ataques": [
+      { "nombre": "Carga Dragón", "tipo": "Dragón" },
+      { "nombre": "Terremoto", "tipo": "Tierra" },
+      { "nombre": "Colmillo Ígneo", "tipo": "Fuego" }
+    ]
+  },
+  {
+    "nombre": "Luxray",
+    "region": "Sinnoh",
+    "pokedex_nacional": 405,
+    "tipo_primario": "Eléctrico",
+    "tipo_secundario": null,
+    "nivel": 38,
+    "ataques": [
+      { "nombre": "Chispazo", "tipo": "Eléctrico" },
+      { "nombre": "Triturar", "tipo": "Siniestro" },
+      { "nombre": "Colmillo Rayo", "tipo": "Eléctrico" }
+    ]
+  },
+  {
+    "nombre": "Snivy",
+    "region": "Teselia",
+    "pokedex_nacional": 495,
+    "tipo_primario": "Planta",
+    "tipo_secundario": null,
+    "nivel": 7,
+    "ataques": [
+      { "nombre": "Latigo Cepa", "tipo": "Planta" },
+      { "nombre": "Placaje", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Zoroark",
+    "region": "Teselia",
+    "pokedex_nacional": 571,
+    "tipo_primario": "Siniestro",
+    "tipo_secundario": null,
+    "nivel": 35,
+    "ataques": [
+      { "nombre": "Pulso Noche", "tipo": "Siniestro" },
+      { "nombre": "Agilidad", "tipo": "Psíquico" },
+      { "nombre": "Tajo Umbrío", "tipo": "Siniestro" }
+    ]
+  },
+  {
+    "nombre": "Chandelure",
+    "region": "Teselia",
+    "pokedex_nacional": 609,
+    "tipo_primario": "Fantasma",
+    "tipo_secundario": "Fuego",
+    "nivel": 45,
+    "ataques": [
+      { "nombre": "Llamarada", "tipo": "Fuego" },
+      { "nombre": "Bola Sombra", "tipo": "Fantasma" },
+      { "nombre": "Energibola", "tipo": "Planta" }
+    ]
+  },
+  {
+    "nombre": "Hydreigon",
+    "region": "Teselia",
+    "pokedex_nacional": 635,
+    "tipo_primario": "Siniestro",
+    "tipo_secundario": "Dragón",
+    "nivel": 64,
+    "ataques": [
+      { "nombre": "Pulso Dragón", "tipo": "Dragón" },
+      { "nombre": "Pulso Umbrío", "tipo": "Siniestro" },
+      { "nombre": "Foco Resplandor", "tipo": "Acero" }
+    ]
+  },
+  {
+    "nombre": "Greninja",
+    "region": "Kalos",
+    "pokedex_nacional": 658,
+    "tipo_primario": "Agua",
+    "tipo_secundario": "Siniestro",
+    "nivel": 36,
+    "ataques": [
+      { "nombre": "Shuriken de Agua", "tipo": "Agua" },
+      { "nombre": "Corte", "tipo": "Normal" },
+      { "nombre": "As Aéreo", "tipo": "Volador" }
+    ]
+  },
+  {
+    "nombre": "Sylveon",
+    "region": "Kalos",
+    "pokedex_nacional": 700,
+    "tipo_primario": "Hada",
+    "tipo_secundario": null,
+    "nivel": 30,
+    "ataques": [
+      { "nombre": "Voz Cautivadora", "tipo": "Hada" },
+      { "nombre": "Rapidez", "tipo": "Normal" },
+      { "nombre": "Fuerza Lunar", "tipo": "Hada" }
+    ]
+  },
+  {
+    "nombre": "Talonflame",
+    "region": "Kalos",
+    "pokedex_nacional": 663,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": "Volador",
+    "nivel": 35,
+    "ataques": [
+      { "nombre": "Nitrocarga", "tipo": "Fuego" },
+      { "nombre": "Pájaro Osado", "tipo": "Volador" },
+      { "nombre": "Ala de Acero", "tipo": "Acero" }
+    ]
+  },
+  {
+    "nombre": "Pangoro",
+    "region": "Kalos",
+    "pokedex_nacional": 675,
+    "tipo_primario": "Lucha",
+    "tipo_secundario": "Siniestro",
+    "nivel": 32,
+    "ataques": [
+      { "nombre": "Machada", "tipo": "Lucha" },
+      { "nombre": "Triturar", "tipo": "Siniestro" }
+    ]
+  },
+  {
+    "nombre": "Mimikyu",
+    "region": "Alola",
+    "pokedex_nacional": 778,
+    "tipo_primario": "Fantasma",
+    "tipo_secundario": "Hada",
+    "nivel": 30,
+    "ataques": [
+      { "nombre": "Garra Umbría", "tipo": "Fantasma" },
+      { "nombre": "Carantoña", "tipo": "Hada" },
+      { "nombre": "Danza Espada", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Incineroar",
+    "region": "Alola",
+    "pokedex_nacional": 727,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": "Siniestro",
+    "nivel": 34,
+    "ataques": [
+      { "nombre": "Lariat Oscuro", "tipo": "Siniestro" },
+      { "nombre": "Colmillo Ígneo", "tipo": "Fuego" },
+      { "nombre": "Tajo Cruzado", "tipo": "Lucha" }
+    ]
+  },
+  {
+    "nombre": "Lycanroc",
+    "region": "Alola",
+    "pokedex_nacional": 745,
+    "tipo_primario": "Roca",
+    "tipo_secundario": null,
+    "nivel": 25,
+    "ataques": [
+      { "nombre": "Roca Veloz", "tipo": "Roca" },
+      { "nombre": "Mordisco", "tipo": "Siniestro" },
+      { "nombre": "Lanzarocas", "tipo": "Roca" }
+    ]
+  },
+  {
+    "nombre": "Vikavolt",
+    "region": "Alola",
+    "pokedex_nacional": 738,
+    "tipo_primario": "Bicho",
+    "tipo_secundario": "Eléctrico",
+    "nivel": 40,
+    "ataques": [
+      { "nombre": "Rayo", "tipo": "Eléctrico" },
+      { "nombre": "Zumbido", "tipo": "Bicho" },
+      { "nombre": "Electrocañón", "tipo": "Eléctrico" }
+    ]
+  },
+  {
+    "nombre": "Dragapult",
+    "region": "Galar",
+    "pokedex_nacional": 887,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": "Fantasma",
+    "nivel": 60,
+    "ataques": [
+      { "nombre": "Draco Flechas", "tipo": "Dragón" },
+      { "nombre": "Infortunio", "tipo": "Fantasma" },
+      { "nombre": "Lanzallamas", "tipo": "Fuego" }
+    ]
+  },
+  {
+    "nombre": "Corviknight",
+    "region": "Galar",
+    "pokedex_nacional": 823,
+    "tipo_primario": "Volador",
+    "tipo_secundario": "Acero",
+    "nivel": 38,
+    "ataques": [
+      { "nombre": "Pico Taladro", "tipo": "Volador" },
+      { "nombre": "Cabeza de Hierro", "tipo": "Acero" },
+      { "nombre": "Plancha Corporal", "tipo": "Lucha" }
+    ]
+  },
+  {
+    "nombre": "Toxtricity",
+    "region": "Galar",
+    "pokedex_nacional": 849,
+    "tipo_primario": "Eléctrico",
+    "tipo_secundario": "Veneno",
+    "nivel": 30,
+    "ataques": [
+      { "nombre": "Amplificador", "tipo": "Eléctrico" },
+      { "nombre": "Bomba Lodo", "tipo": "Veneno" },
+      { "nombre": "Onda Voltio", "tipo": "Eléctrico" }
+    ]
+  },
+  {
+    "nombre": "Cinderace",
+    "region": "Galar",
+    "pokedex_nacional": 815,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": null,
+    "nivel": 35,
+    "ataques": [
+      { "nombre": "Balón Ígneo", "tipo": "Fuego" },
+      { "nombre": "Bote", "tipo": "Volador" },
+      { "nombre": "Amago", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Meowscarada",
+    "region": "Paldea",
+    "pokedex_nacional": 908,
+    "tipo_primario": "Planta",
+    "tipo_secundario": "Siniestro",
+    "nivel": 36,
+    "ataques": [
+      { "nombre": "Truco Floral", "tipo": "Planta" },
+      { "nombre": "Tajo Umbrío", "tipo": "Siniestro" },
+      { "nombre": "Ida y Vuelta", "tipo": "Bicho" }
+    ]
+  },
+  {
+    "nombre": "Tinkaton",
+    "region": "Paldea",
+    "pokedex_nacional": 927,
+    "tipo_primario": "Hada",
+    "tipo_secundario": "Acero",
+    "nivel": 38,
+    "ataques": [
+      { "nombre": "Martillo Gigante", "tipo": "Acero" },
+      { "nombre": "Carantoña", "tipo": "Hada" },
+      { "nombre": "Desarme", "tipo": "Siniestro" }
+    ]
+  },
+  {
+    "nombre": "Ceruledge",
+    "region": "Paldea",
+    "pokedex_nacional": 937,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": "Fantasma",
+    "nivel": 45,
+    "ataques": [
+      { "nombre": "Espada Lamento", "tipo": "Fuego" },
+      { "nombre": "Sombra Vil", "tipo": "Fantasma" },
+      { "nombre": "Psicocorte", "tipo": "Psíquico" }
+    ]
+  },
+  {
+    "nombre": "Baxcalibur",
+    "region": "Paldea",
+    "pokedex_nacional": 998,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": "Hielo",
+    "nivel": 54,
+    "ataques": [
+      { "nombre": "Asalto Gélido", "tipo": "Hielo" },
+      { "nombre": "Garra Dragón", "tipo": "Dragón" },
+      { "nombre": "Danza Espada", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Snorlax",
+    "region": "Kanto",
+    "pokedex_nacional": 143,
+    "tipo_primario": "Normal",
+    "tipo_secundario": null,
+    "nivel": 30,
+    "ataques": [
+      { "nombre": "Cuerpo Pesado", "tipo": "Acero" },
+      { "nombre": "Descanso", "tipo": "Normal" },
+      { "nombre": "Golpe Cuerpo", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Dragonite",
+    "region": "Kanto",
+    "pokedex_nacional": 149,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": "Volador",
+    "nivel": 55,
+    "ataques": [
+      { "nombre": "Carga Dragón", "tipo": "Dragón" },
+      { "nombre": "Puño Fuego", "tipo": "Fuego" },
+      { "nombre": "Velocidad Extrema", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Scizor",
+    "region": "Johto",
+    "pokedex_nacional": 212,
+    "tipo_primario": "Bicho",
+    "tipo_secundario": "Acero",
+    "nivel": 40,
+    "ataques": [
+      { "nombre": "Puño Bala", "tipo": "Acero" },
+      { "nombre": "Tijera X", "tipo": "Bicho" },
+      { "nombre": "Danza Espada", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Umbreon",
+    "region": "Johto",
+    "pokedex_nacional": 197,
+    "tipo_primario": "Siniestro",
+    "tipo_secundario": null,
+    "nivel": 25,
+    "ataques": [
+      { "nombre": "Alarido", "tipo": "Siniestro" },
+      { "nombre": "Luz Lunar", "tipo": "Hada" },
+      { "nombre": "Juego Sucio", "tipo": "Siniestro" }
+    ]
+  },
+  {
+    "nombre": "Metagross",
+    "region": "Hoenn",
+    "pokedex_nacional": 376,
+    "tipo_primario": "Acero",
+    "tipo_secundario": "Psíquico",
+    "nivel": 45,
+    "ataques": [
+      { "nombre": "Puño Meteoro", "tipo": "Acero" },
+      { "nombre": "Cabezazo Zen", "tipo": "Psíquico" },
+      { "nombre": "Terremoto", "tipo": "Tierra" }
+    ]
+  },
+  {
+    "nombre": "Salamence",
+    "region": "Hoenn",
+    "pokedex_nacional": 373,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": "Volador",
+    "nivel": 50,
+    "ataques": [
+      { "nombre": "Garra Dragón", "tipo": "Dragón" },
+      { "nombre": "Vuelo", "tipo": "Volador" },
+      { "nombre": "Llamarada", "tipo": "Fuego" }
+    ]
+  },
+  {
+    "nombre": "Infernape",
+    "region": "Sinnoh",
+    "pokedex_nacional": 392,
+    "tipo_primario": "Fuego",
+    "tipo_secundario": "Lucha",
+    "nivel": 36,
+    "ataques": [
+      { "nombre": "A bocajarro", "tipo": "Lucha" },
+      { "nombre": "Rueda Fuego", "tipo": "Fuego" },
+      { "nombre": "Ultrapuño", "tipo": "Lucha" }
+    ]
+  },
+  {
+    "nombre": "Staraptor",
+    "region": "Sinnoh",
+    "pokedex_nacional": 398,
+    "tipo_primario": "Normal",
+    "tipo_secundario": "Volador",
+    "nivel": 34,
+    "ataques": [
+      { "nombre": "Pájaro Osado", "tipo": "Volador" },
+      { "nombre": "A bocajarro", "tipo": "Lucha" },
+      { "nombre": "Ataque Rápido", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Haxorus",
+    "region": "Teselia",
+    "pokedex_nacional": 612,
+    "tipo_primario": "Dragón",
+    "tipo_secundario": null,
+    "nivel": 48,
+    "ataques": [
+      { "nombre": "Guillotina", "tipo": "Normal" },
+      { "nombre": "Garra Dragón", "tipo": "Dragón" },
+      { "nombre": "Danza Dragón", "tipo": "Dragón" }
+    ]
+  },
+  {
+    "nombre": "Volcarona",
+    "region": "Teselia",
+    "pokedex_nacional": 637,
+    "tipo_primario": "Bicho",
+    "tipo_secundario": "Fuego",
+    "nivel": 59,
+    "ataques": [
+      { "nombre": "Danza Aleteo", "tipo": "Bicho" },
+      { "nombre": "Danza Llama", "tipo": "Fuego" },
+      { "nombre": "Zumbido", "tipo": "Bicho" }
+    ]
+  },
+  {
+    "nombre": "Aegislash",
+    "region": "Kalos",
+    "pokedex_nacional": 681,
+    "tipo_primario": "Acero",
+    "tipo_secundario": "Fantasma",
+    "nivel": 35,
+    "ataques": [
+      { "nombre": "Escudo Real", "tipo": "Acero" },
+      { "nombre": "Espada Santa", "tipo": "Lucha" },
+      { "nombre": "Sombra Vil", "tipo": "Fantasma" }
+    ]
+  },
+  {
+    "nombre": "Noivern",
+    "region": "Kalos",
+    "pokedex_nacional": 715,
+    "tipo_primario": "Volador",
+    "tipo_secundario": "Dragón",
+    "nivel": 48,
+    "ataques": [
+      { "nombre": "Estruendo", "tipo": "Normal" },
+      { "nombre": "Pulso Dragón", "tipo": "Dragón" },
+      { "nombre": "Tajo Aéreo", "tipo": "Volador" }
+    ]
+  },
+  {
+    "nombre": "Primarina",
+    "region": "Alola",
+    "pokedex_nacional": 730,
+    "tipo_primario": "Agua",
+    "tipo_secundario": "Hada",
+    "nivel": 34,
+    "ataques": [
+      { "nombre": "Aria Burbuja", "tipo": "Agua" },
+      { "nombre": "Fuerza Lunar", "tipo": "Hada" },
+      { "nombre": "Vozarrón", "tipo": "Normal" }
+    ]
+  },
+  {
+    "nombre": "Grimmsnarl",
+    "region": "Galar",
+    "pokedex_nacional": 861,
+    "tipo_primario": "Siniestro",
+    "tipo_secundario": "Hada",
+    "nivel": 42,
+    "ataques": [
+      { "nombre": "Choque de Almas", "tipo": "Hada" },
+      { "nombre": "Falso Surco", "tipo": "Siniestro" },
+      { "nombre": "Reflejo", "tipo": "Psíquico" }
+    ]
+  },
+  {
+    "nombre": "Urshifu",
+    "region": "Galar",
+    "pokedex_nacional": 892,
+    "tipo_primario": "Lucha",
+    "tipo_secundario": "Siniestro",
+    "nivel": 70,
+    "ataques": [
+      { "nombre": "Golpe Ejecutor", "tipo": "Siniestro" },
+      { "nombre": "A bocajarro", "tipo": "Lucha" },
+      { "nombre": "Puño Trueno", "tipo": "Eléctrico" }
+    ]
+  },
+  {
+    "nombre": "Clodsire",
+    "region": "Paldea",
+    "pokedex_nacional": 980,
+    "tipo_primario": "Veneno",
+    "tipo_secundario": "Tierra",
+    "nivel": 20,
+    "ataques": [
+      { "nombre": "Puya Nociva", "tipo": "Veneno" },
+      { "nombre": "Terremoto", "tipo": "Tierra" },
+      { "nombre": "Tóxico", "tipo": "Veneno" }
+    ]
+  },
+  {
+    "nombre": "Koraidon",
+    "region": "Paldea",
+    "pokedex_nacional": 1007,
+    "tipo_primario": "Lucha",
+    "tipo_secundario": "Dragón",
+    "nivel": 72,
+    "ataques": [
+      { "nombre": "Lid Omnifase", "tipo": "Lucha" },
+      { "nombre": "Garra Dragón", "tipo": "Dragón" },
+      { "nombre": "Nitrocarga", "tipo": "Fuego" }
+    ]
+  }
+]
