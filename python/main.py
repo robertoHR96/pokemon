@@ -9,7 +9,6 @@ COLLECTION_NAME = "pokemons"
 db = get_db()
 col = db[COLLECTION_NAME]
 controller = PokemonController(col)
-print(db.pokemons.count_documents({}))
 
 result = controller.find_by_name("a")
 print(result)
