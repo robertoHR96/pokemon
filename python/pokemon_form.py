@@ -1,14 +1,8 @@
-
-
 import streamlit as st
 
+
 def pokemon_form(pokemon=None):
-    """
-    Renders a form for creating or editing a Pokémon.
-    - If `pokemon` is provided, the form is pre-filled for editing.
-    - Otherwise, it's a creation form.
-    Returns a dictionary with the form data if submitted, otherwise None.
-    """
+
     if pokemon:
         nombre_val = pokemon.nombre
         region_val = pokemon.region or ""
@@ -16,7 +10,9 @@ def pokemon_form(pokemon=None):
         tipo1_val = pokemon.tipo_primario or ""
         tipo2_val = pokemon.tipo_secundario or ""
         nivel_val = pokemon.nivel or 1
-        ataques_val = "\n".join(f"{a.nombre}||{a.tipo}" for a in (pokemon.ataques or []))
+        ataques_val = "\n".join(
+            f"{a.nombre}||{a.tipo}" for a in (pokemon.ataques or [])
+        )
     else:
         nombre_val = region_val = tipo1_val = tipo2_val = ataques_val = ""
         pokedex_val = 0
@@ -45,9 +41,7 @@ def pokemon_form(pokemon=None):
                 nombre_a, tipo_a = line.split("||", 1)
             else:
                 nombre_a, tipo_a = line, "Normal"
-            ataques_list.append(
-                {"nombre": nombre_a.strip(), "tipo": tipo_a.strip()}
-            )
+            ataques_list.append({"nombre": nombre_a.strip(), "tipo": tipo_a.strip()})
 
         payload = {
             "nombre": nombre.strip(),
@@ -61,4 +55,3 @@ def pokemon_form(pokemon=None):
         return payload
 
     return None
-

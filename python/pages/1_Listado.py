@@ -1,29 +1,49 @@
+# -*- coding: utf-8 -*-
+"""
+Página de listado de Pokémon.
+
+Esta página de la aplicación Streamlit muestra una lista de los Pokémon
+almacenados en la base de datos. Permite filtrar los Pokémon por nombre,
+región y número de Pokedex, y también permite eliminar Pokémon.
+"""
+
 import streamlit as st
 from db import get_db, DB_NAME
 from controller import PokemonController
 
 
 def format_ataques(ataques):
+    """
+    Formatea la lista de ataques de un Pokémon para su visualización.
+
+    Args:
+        ataques (list): Una lista de objetos de ataque.
+
+    Returns:
+        str: Una cadena con los ataques formateados, o "-" si no hay ataques.
+    """
     if not ataques:
         return "-"
     return ", ".join([f"{a.nombre} ({a.tipo})" for a in ataques])
 
 
+# Configuración de la página
 st.set_page_config(page_title="Listado de Pokémon", layout="wide")
 
 st.header("Listado de Pokémon")
 
 try:
+    # Conexión a la base de datos y al controlador
     db = get_db()
     controller = PokemonController(db["pokemons"])
 
-    # Filtros
+    # Filtros de búsqueda
     with st.expander("Filtros de búsqueda", expanded=True):
         nombre_filtro = st.text_input("Nombre contiene")
         region_filtro = st.text_input("Región")
         min_pokedex = st.number_input("Pokedex mínimo", min_value=0, value=0)
 
-    # Construir filtro
+    # Construcción del filtro para la consulta a la base de datos
     filtro = {}
     if nombre_filtro:
         filtro["nombre"] = {"$regex": nombre_filtro, "$options": "i"}
@@ -32,15 +52,14 @@ try:
     if min_pokedex > 0:
         filtro["pokedex_nacional"] = {"$gte": min_pokedex}
 
+    # Búsqueda de Pokémon con los filtros aplicados
     pokemons = controller.find(filtro, limit=200)
 
     if not pokemons:
         st.info("No se encontraron Pokémon con esos filtros.")
     else:
-        # Usar un ID único para el botón de borrado para evitar conflictos
+        # Selección y eliminación de Pokémon
         delete_button_key = "delete_pokemon_button"
-
-        # Selección para borrar
         pokemon_to_delete_id = st.selectbox(
             "Selecciona un Pokémon para eliminar",
             options=[""] + [p.id for p in pokemons],
@@ -60,8 +79,7 @@ try:
             else:
                 st.warning("Por favor, selecciona un Pokémon para eliminar.")
 
-        # Mostrar tabla profesional
-
+        # Preparación de los datos para la tabla
         data = [
             {
                 "Imagen": f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{p.pokedex_nacional}.png",
@@ -77,6 +95,7 @@ try:
             for p in pokemons
         ]
 
+        # Visualización de los datos en una tabla
         st.dataframe(
             data,
             use_container_width=True,

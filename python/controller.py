@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Módulo del controlador de Pokémon.
+
+Este módulo define la clase `PokemonController`, que se encarga de
+la interacción con la base de datos de MongoDB para realizar
+operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los Pokémon.
+"""
+
 from typing import List, Optional, Dict, Any
 from pymongo.collection import Collection
 from pymongo import ReturnDocument
@@ -8,24 +17,34 @@ from models import Pokemon, PyObjectId
 
 class PokemonController:
     """
-    Controller para manejar la colección 'pokemons' en MongoDB.
-    Proporciona CRUD completo y búsqueda por nombre.
+    Controlador para manejar la colección 'pokemons' en MongoDB.
+
+    Proporciona un conjunto completo de métodos para realizar operaciones
+    CRUD (Crear, Leer, Actualizar, Eliminar) y búsqueda por nombre.
     """
 
     def __init__(self, collection: Collection):
         """
-        Inicializa el controller con una colección de PyMongo.
-        Crea índices recomendados para consultas frecuentes.
+        Inicializa el controlador con una colección de PyMongo.
+
+        Además, crea índices en la colección para mejorar el rendimiento
+        de las consultas más frecuentes.
+
+        Args:
+            collection (Collection): La colección de MongoDB a utilizar.
         """
         self.col = collection
 
-        # Índices recomendados
+        # Índices recomendados para optimizar las búsquedas
         self.col.create_index("nombre", unique=False)
         self.col.create_index("pokedex_nacional", unique=False)
 
     def _now(self) -> datetime:
         """
-        Retorna la fecha y hora UTC actual.
+        Retorna la fecha y hora actual en formato UTC.
+
+        Returns:
+            datetime: La fecha y hora actual en UTC.
         """
         return datetime.utcnow()
 
@@ -35,8 +54,15 @@ class PokemonController:
     def insert(self, payload: Dict[str, Any]) -> Pokemon:
         """
         Inserta un nuevo Pokémon en la base de datos.
-        Agrega campos 'created_at' y 'updated_at'.
-        Devuelve el objeto Pokemon insertado.
+
+        Agrega automáticamente los campos 'created_at' y 'updated_at'
+        con la fecha y hora actual.
+
+        Args:
+            payload (Dict[str, Any]): Un diccionario con los datos del Pokémon.
+
+        Returns:
+            Pokemon: El objeto Pokémon insertado, validado con Pydantic.
         """
         now = self._now()
         payload.update({"created_at": now, "updated_at": now})
@@ -51,7 +77,13 @@ class PokemonController:
     def find_by_id(self, id_str: str) -> Optional[Pokemon]:
         """
         Busca un Pokémon por su ObjectId.
-        Retorna None si no existe o el id no es válido.
+
+        Args:
+            id_str (str): El ID del Pokémon en formato de cadena.
+
+        Returns:
+            Optional[Pokemon]: El objeto Pokémon si se encuentra, o None si no existe
+                               o el ID no es válido.
         """
         try:
             oid = PyObjectId.validate(id_str)
@@ -65,11 +97,17 @@ class PokemonController:
         self, filter: Optional[Dict[str, Any]] = None, limit: int = 50, skip: int = 0
     ) -> List[Pokemon]:
         """
-        Busca Pokémon con filtro opcional.
-        - filter: Diccionario de consulta MongoDB.
-        - limit: número máximo de documentos a retornar.
-        - skip: número de documentos a saltar (paginación).
-        Retorna lista de instancias Pokemon.
+        Busca Pokémon con un filtro opcional y paginación.
+
+        Args:
+            filter (Optional[Dict[str, Any]], optional): Diccionario de consulta de MongoDB.
+                                                        Defaults to None.
+            limit (int, optional): Número máximo de documentos a retornar. Defaults to 50.
+            skip (int, optional): Número de documentos a saltar (para paginación).
+                                  Defaults to 0.
+
+        Returns:
+            List[Pokemon]: Una lista de instancias de Pokémon.
         """
         f = filter or {}
         cursor = self.col.find(f).skip(skip).limit(limit)
@@ -78,8 +116,15 @@ class PokemonController:
     def find_by_name(self, name: str, exact: bool = False) -> List[Pokemon]:
         """
         Busca Pokémon por nombre.
-        - exact=True -> nombre exacto
-        - exact=False -> búsqueda parcial (regex, case-insensitive)
+
+        Args:
+            name (str): El nombre del Pokémon a buscar.
+            exact (bool, optional): Si es True, busca el nombre exacto. Si es False,
+                                    realiza una búsqueda parcial (regex, case-insensitive).
+                                    Defaults to False.
+
+        Returns:
+            List[Pokemon]: Una lista de Pokémon que coinciden con la búsqueda.
         """
         if exact:
             filter_query = {"nombre": name}
@@ -94,7 +139,16 @@ class PokemonController:
     def update(self, id_str: str, update_fields: Dict[str, Any]) -> Optional[Pokemon]:
         """
         Actualiza un Pokémon por su ObjectId.
-        Retorna el objeto actualizado o None si no existe.
+
+        Actualiza automáticamente el campo 'updated_at' con la fecha y hora actual.
+
+        Args:
+            id_str (str): El ID del Pokémon a actualizar.
+            update_fields (Dict[str, Any]): Un diccionario con los campos a actualizar.
+
+        Returns:
+            Optional[Pokemon]: El objeto Pokémon actualizado si se encuentra, o None
+                               si no existe.
         """
         try:
             oid = PyObjectId.validate(id_str)
@@ -114,7 +168,12 @@ class PokemonController:
     def delete(self, id_str: str) -> bool:
         """
         Borra un Pokémon por su ObjectId.
-        Retorna True si se eliminó, False si no existía.
+
+        Args:
+            id_str (str): El ID del Pokémon a borrar.
+
+        Returns:
+            bool: True si se eliminó correctamente, False si no existía.
         """
         try:
             oid = PyObjectId.validate(id_str)
@@ -127,7 +186,13 @@ class PokemonController:
     def delete_many(self, filter: Dict[str, Any]) -> int:
         """
         Borra múltiples Pokémon según un filtro.
-        Retorna la cantidad de documentos eliminados.
+
+        Args:
+            filter (Dict[str, Any]): El filtro de MongoDB para seleccionar los
+                                     documentos a eliminar.
+
+        Returns:
+            int: La cantidad de documentos eliminados.
         """
         res = self.col.delete_many(filter)
         return res.deleted_count

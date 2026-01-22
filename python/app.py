@@ -1,13 +1,24 @@
+# -*- coding: utf-8 -*-
+"""
+Módulo principal de la aplicación de Streamlit.
+
+Este módulo configura la página principal de la aplicación,
+mostrando un mensaje de bienvenida y una guía de uso.
+"""
+
 import streamlit as st
 
+# Configuración de la página de Streamlit
 st.set_page_config(
     page_title="Pokedex Profesional - Inicio",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
+# Título de la página principal
 st.title("¡Bienvenido al Pokedex Profesional!")
 
+# Contenido de la página principal en formato Markdown
 st.markdown(
     """
     Esta es una aplicación de Streamlit para gestionar una base de datos de Pokémon en MongoDB.
