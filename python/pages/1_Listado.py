@@ -1,17 +1,15 @@
-
 import streamlit as st
 from db import get_db, DB_NAME
 from controller import PokemonController
+
 
 def format_ataques(ataques):
     if not ataques:
         return "-"
     return ", ".join([f"{a.nombre} ({a.tipo})" for a in ataques])
 
-st.set_page_config(
-    page_title="Listado de Pokémon", 
-    layout="wide"
-)
+
+st.set_page_config(page_title="Listado de Pokémon", layout="wide")
 
 st.header("Listado de Pokémon")
 
@@ -24,7 +22,7 @@ try:
         nombre_filtro = st.text_input("Nombre contiene")
         region_filtro = st.text_input("Región")
         min_pokedex = st.number_input("Pokedex mínimo", min_value=0, value=0)
-        
+
     # Construir filtro
     filtro = {}
     if nombre_filtro:
@@ -44,9 +42,11 @@ try:
 
         # Selección para borrar
         pokemon_to_delete_id = st.selectbox(
-            "Selecciona un Pokémon para eliminar", 
+            "Selecciona un Pokémon para eliminar",
             options=[""] + [p.id for p in pokemons],
-            format_func=lambda x: next((p.nombre for p in pokemons if p.id == x), "Seleccionar...")
+            format_func=lambda x: next(
+                (p.nombre for p in pokemons if p.id == x), "Seleccionar..."
+            ),
         )
 
         if st.button("Eliminar Pokémon Seleccionado", key=delete_button_key):
@@ -61,8 +61,10 @@ try:
                 st.warning("Por favor, selecciona un Pokémon para eliminar.")
 
         # Mostrar tabla profesional
+
         data = [
             {
+                "Imagen": f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{p.pokedex_nacional}.png",
                 "ID": str(p.id),
                 "Nombre": p.nombre,
                 "Región": p.region,
@@ -74,7 +76,18 @@ try:
             }
             for p in pokemons
         ]
-        st.dataframe(data, use_container_width=True)
+
+        st.dataframe(
+            data,
+            use_container_width=True,
+            row_height=90,
+            column_config={
+                "Imagen": st.column_config.ImageColumn("Imagen", width="medium")
+            },
+        )
+
 
 except Exception as e:
-    st.error(f"No se pudo conectar a la base de datos. Verifica que la base de datos '{DB_NAME}' exista y esté cargada. Error: {e}")
+    st.error(
+        f"No se pudo conectar a la base de datos. Verifica que la base de datos '{DB_NAME}' exista y esté cargada. Error: {e}"
+    )
